@@ -14,6 +14,7 @@ class Archetect < Formula
       def install
         bin.install "archetect"
       end
+    end
   end
 
   on_linux do
@@ -24,8 +25,8 @@ class Archetect < Formula
       def install
         bin.install "archetect"
       end
+    end
   end
-
 
 end
 
