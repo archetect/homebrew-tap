@@ -7,7 +7,7 @@
 To install Archetect using this tap:
 
 ```shell
-brew tap archetect/archetect
+brew tap archetect/tap
 brew install archetect
 ```
 
