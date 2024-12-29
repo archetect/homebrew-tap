@@ -1,6 +1,6 @@
 # Archetect Homebrew Tap
 
-![Archetect](https://github.com/archetect/archetect) is a powerful code-centric, language agnostic content generator.
+[Archetect](https://github.com/archetect/archetect) is a powerful code-centric, language agnostic content generator.
 
 ## Installation
 
