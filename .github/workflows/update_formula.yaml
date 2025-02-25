@@ -1,0 +1,33 @@
+name: Update Formula
+run-name: Update ${{ github.event.client_payload.binary }} to ${{ github.event.client_payload.version }}
+
+permissions: write-all
+
+concurrency:
+  group: update-formula
+
+on:
+  repository_dispatch:
+    types: [update-formula]
+
+jobs:
+  update-formula:
+    name: Update Formula
+    runs-on: ubuntu-latest
+    env:
+      ANSWERS: ${{ toJson(github.event.client_payload) }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: archetect/render-action@v1
+        with:
+          source: "archetype" 
+          answers: $ANSWERS
+
+      - run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "github-actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Update ${{ github.event.client_payload.binary }} to ${{ github.event.client_payload.version }}"
+          git push
