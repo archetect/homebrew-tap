@@ -1,32 +1,32 @@
-# Documentation: https://docs.brew.sh/Formula-Cookbook
-#                https://rubydoc.brew.sh/Formula
-# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 class Archetect < Formula
-  desc "A powerful code-centric, language agnostic content generator"
+  desc "Archetect"
   homepage "https://github.com/archetect/archetect"
-  version "2.0.0"
-
-  on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/archetect/archetect/releases/download/v#{version}/archetect-v#{version}-macos_aarch64.tar.gz"
-      sha256 "4e854d18dd1fbcf126c813a3cbc93c088a6b0b5faedfef7e02eb0c6b7309c9d9"
-
-      def install
-        bin.install "archetect"
-      end
-    end
-  end
+  version "2.0.3"
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/archetect/archetect/releases/download/v#{version}/archetect-v#{version}-linux_x64.tar.gz"
-      sha256 "d5f3495dde91e78ecb2eca1920594fd9460c58a413f68b13e704ec0d4a3ac0b6"
-
-      def install
-        bin.install "archetect"
-      end
+      url "https://github.com/archetect/archetect/releases/download/v2.0.3/archetect-v2.0.3-linux-x86_64.tar.gz"
+      sha256 "ee7e3892cf68c067d2393ecf25ed2ff5788785587dd2420104798a5159061a3f"
     end
   end
 
-end
+  on_macos do
+    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
+      url "https://github.com/archetect/archetect/releases/download/v2.0.3/archetect-v2.0.3-macos-x86_64.tar.gz"
+      sha256 "3dedcb762794706cd1607be3a52eedd13bca6fbdc18f75b1ba1f3c90980dfc0e"
+    end
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/archetect/archetect/releases/download/v2.0.3/archetect-v2.0.3-macos-arm64.tar.gz"
+      sha256 "3dedcb762794706cd1607be3a52eedd13bca6fbdc18f75b1ba1f3c90980dfc0e"
+    end
+  end
 
+  def install
+    bin.install "archetect"
+  end
+
+  test do
+    system "#{bin}/archetect --version"
+  end
+
+end
