@@ -20,12 +20,34 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: archetect/render-action@v1
+      - name: Generate base formula
+        uses: archetect-actions/archetect-render@v1
         with:
           source: "archetype" 
           answers: $ANSWERS
 
-      - run: |
+      - name: Generate versioned formula using Archetect
+        uses: archetect-actions/archetect-render@v1
+        with:
+          source: "archetype"
+          answers: $ANSWERS
+
+      - name: Clean up old versions
+        run: |
+          BINARY="${{ github.event.client_payload.binary }}"
+          
+          # Find all versioned formulas for this binary, sort by version (newest first), and remove old ones
+          ls Formula/${BINARY}@*.rb 2>/dev/null | \
+          sed "s/Formula\/${BINARY}@\(.*\)\.rb/\1/" | \
+          sort -V -r | \
+          tail -n +6 | \
+          while read version; do
+            echo "Removing old formula: Formula/${BINARY}@${version}.rb"
+            rm -f "Formula/${BINARY}@${version}.rb"
+          done
+
+      - name: Commit and push changes
+        run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "github-actions@users.noreply.github.com"
           git add -A
