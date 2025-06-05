@@ -23,19 +23,13 @@ jobs:
       - name: Generate base formula
         uses: archetect-actions/archetect-render@v1
         with:
-          source: "archetype" 
-          answers: $ANSWERS
-
-      - name: Generate versioned formula using Archetect
-        uses: archetect-actions/archetect-render@v1
-        with:
           source: "archetype"
           answers: $ANSWERS
 
       - name: Clean up old versions
         run: |
           BINARY="${{ github.event.client_payload.binary }}"
-          
+
           # Find all versioned formulas for this binary, sort by version (newest first), and remove old ones
           ls Formula/${BINARY}@*.rb 2>/dev/null | \
           sed "s/Formula\/${BINARY}@\(.*\)\.rb/\1/" | \
