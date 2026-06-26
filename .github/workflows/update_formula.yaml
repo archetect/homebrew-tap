@@ -25,6 +25,8 @@ jobs:
         with:
           source: "archetype"
           answers: $ANSWERS
+          # The archetype is now Lua (v3-only); pin the renderer to a v3 archetect.
+          version: "v3.0.0"
 
       - name: Clean up old versions
         run: |
