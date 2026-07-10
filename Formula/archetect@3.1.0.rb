@@ -1,4 +1,4 @@
-class ArchetectAT3 < Formula
+class ArchetectAT3_1_0 < Formula
   desc "Archetect"
   homepage "https://github.com/archetect/archetect"
   version "3.1.0"
