@@ -1,23 +1,23 @@
 class Archetect < Formula
   desc "Archetect"
   homepage "https://github.com/archetect/archetect"
-  version "3.6.3"
+  version "3.6.4"
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/archetect/archetect/releases/download/v3.6.3/archetect-v3.6.3-linux-x86_64.tar.gz"
-      sha256 "3b5784bd04567b2f639f4c66d4a091d4e7e12b1d29938869448f6a1b8efc4e06"
+      url "https://github.com/archetect/archetect/releases/download/v3.6.4/archetect-v3.6.4-linux-x86_64.tar.gz"
+      sha256 "8dc729dcdd0efd5bf70f95787876b760a4579d1f03f0200eb3dacb29776510ba"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/archetect/archetect/releases/download/v3.6.3/archetect-v3.6.3-linux-arm64.tar.gz"
-      sha256 "337dee51367a3fe554a4c99c117dd9e0e4a46d14b3f60a946f8d80211651035a"
+      url "https://github.com/archetect/archetect/releases/download/v3.6.4/archetect-v3.6.4-linux-arm64.tar.gz"
+      sha256 "8a7898f7aac63170609f39ecc8e1e973f152fd7dd6a7a90046e08eed3b52436b"
     end
   end
 
   on_macos do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/archetect/archetect/releases/download/v3.6.3/archetect-v3.6.3-macos-arm64.tar.gz"
-      sha256 "20129e69605d3aa3b13961c5ec534444d0923ae36b028bd69bf936e1683c8c91"
+      url "https://github.com/archetect/archetect/releases/download/v3.6.4/archetect-v3.6.4-macos-arm64.tar.gz"
+      sha256 "0bc02c05bd64ea607146a3d5faf8a421a1e5ae806be6255dfdeee876a0046b56"
     end
   end
 
